@@ -1,0 +1,108 @@
+/* styles/globals.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e9ecef; /* Slightly darker soft background */
+  font-family: Arial, sans-serif;
+  color: #222; /* Darker default text */
+}
+
+/* Container for the whole app */
+.container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title */
+.container h1 {
+  text-align: center;
+  color: #111; /* Darker title */
+  margin-bottom: 40px;
+}
+
+/* Main content: form and transaction side by side */
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Form section */
+.formSection {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc; /* <-- Added clear border */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Form styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+}
+
+.form button {
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form button:hover {
+  background-color: #45a049;
+}
+
+/* Transaction section */
+.transactionSection {
+  flex: 2;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc; /* <-- Added clear border */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.transactionSection h2 {
+  color: #111; /* Darker heading */
+  margin-bottom: 20px;
+}
+
+/* Each transaction item */
+.transaction {
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #bbb;
+}
+
+.transaction p {
+  margin: 0;
+  color: #222; /* Darker text */
+}
+
+.transaction strong {
+  color: #000; /* Strong is fully black */
+}
+
+/* If no transactions */
+.noTransactions {
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
