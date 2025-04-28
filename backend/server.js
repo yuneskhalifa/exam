@@ -58,7 +58,7 @@ const app = express();
 const PORT = 8080;
 
 const corsOptions = {
-    origin: 'https://turbo-memory-x5r7xvr6vpg26q5x-3000.app.github.dev', // your frontend's URL
+    origin: 'http://localhost:3000', // your frontend's URL
     methods: ['GET', 'POST'],
   };
   
@@ -67,11 +67,35 @@ app.use(express.json()); // Parse JSON body
 
 let transactions = [];
 let accounts = {}; // Holds account ID and balance
+app.get('/ping', (req, res) => {
+  return res.status(200).send('Pong');
+});
 
 // GET all transactions
 app.get('/transactions', (req, res) => {
   return res.status(200).json(transactions);
 });
+
+// Backend Route to get specific transaction by ID
+app.get('/transactions/:id', (req, res) => {
+  const transactionId = parseInt(req.params.id, 10);
+  const transaction = transactions.find(t => t.transaction_id === transactionId);
+  if (!transaction) {
+    return res.status(404).json({ error: 'Transaction not found' });
+  }
+  return res.status(200).json(transaction);
+});
+
+// Backend Route to get account balance
+app.get('/accounts/:account_id', (req, res) => {
+  const accountId = req.params.account_id;
+  const balance = accounts[accountId] || 0;
+  return res.status(200).json({
+    account_id: accountId,
+    balance: balance
+  });
+});
+
 
 // POST a new transaction
 app.post('/transactions', (req, res) => {
@@ -90,11 +114,11 @@ app.post('/transactions', (req, res) => {
 
   // Create a new transaction
   const transaction = {
-    id: transactions.length + 1,
+    transaction_id: transactions.length + 1,
     account_id,
     amount,
     balance: accounts[account_id],
-    created_at: new Date().toISOString(),
+    //created_at: new Date().toISOString(),
   };
 
   transactions.unshift(transaction); // Add to the top of the list

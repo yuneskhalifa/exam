@@ -12,7 +12,7 @@ export default function Home() {
     e.preventDefault();
   
     try {
-      const res = await fetch('https://turbo-memory-x5r7xvr6vpg26q5x-8080.app.github.dev/transactions', {
+      const res = await fetch('http://localhost:8080/transactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,8 @@ export default function Home() {
           onChange={(e) => setAmount(e.target.value)}
           required
         />
-        <input data-type="transaction-submit" type="submit">Submit</input>
+        <input data-type="transaction-submit" type="submit" value="Submit" />
+
       </form>
 
       <div>
@@ -72,7 +73,7 @@ export default function Home() {
           <div>
             {transactions.map((transaction) => (
               <div
-                key={transaction.id}
+                key={transaction.transaction_id}
                 className={styles.transaction}
                 data-type="transaction"
                 data-account-id={transaction.account_id}
